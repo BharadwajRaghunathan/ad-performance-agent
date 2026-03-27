@@ -1,0 +1,12 @@
+ad_id,platform,campaign,spend,impressions,clicks,conversions,CTR,CPC,ROAS
+AD001,Meta,Summer Sale,1200.00,95000,2850,142,0.0300,0.42,6.80
+AD002,Google,Competitor Keywords,980.00,42000,1260,94,0.0300,0.78,5.42
+AD003,Meta,Retargeting,650.00,38000,1520,118,0.0400,0.43,8.15
+AD004,Google,Summer Sale,1450.00,88000,1760,88,0.0200,0.82,3.25
+AD005,Meta,Brand Awareness,2100.00,210000,2100,21,0.0100,1.00,0.85
+AD006,Google,Brand Awareness,1750.00,175000,1750,26,0.0100,1.00,1.10
+AD007,Meta,Competitor Keywords,870.00,52000,936,28,0.0180,0.93,1.95
+AD008,Google,Retargeting,530.00,31000,1085,97,0.0350,0.49,7.35
+AD009,Meta,Lookalike Audience,720.00,55000,1650,103,0.0300,0.44,6.12
+AD010,Google,Lookalike Audience,890.00,67000,1340,71,0.0200,0.66,3.85
+AD011,Meta,Summer Sale,430.00,29000,580,9,0.0200,0.74,1.20
