@@ -52,6 +52,42 @@ Chroma memory accumulates every analysis; future runs retrieve similar past camp
 | Observability | LangSmith + Langfuse |
 | Data Processing | pandas |
 
+## Results + Screenshots
+
+### FastAPI Response — POST /run-agent
+![FastAPI Output](results%20screenshots/fastapi%20output.png)
+
+### LangSmith — 4-Node Pipeline Trace
+![LangSmith Nodes](results%20screenshots/langsmith%20nodes.png)
+
+### LangSmith — Trace Overview
+![LangSmith Traces](results%20screenshots/langsmith%20traces.png)
+
+### Langfuse — 2 LLM Calls Logged
+![Langfuse](results%20screenshots/langfuse.png)
+
+## API Response Explained
+
+When you call `POST /run-agent` with a CSV file, the agent returns a single JSON object with these fields:
+
+| Field | What it contains |
+|---|---|
+| `status` | `"success"` if the pipeline completed without errors |
+| `summary` | High-level stats: total ads analysed, total spend, avg ROAS, avg CTR |
+| `top_performers` | Top 3 ads ranked by ROAS — full metrics for each |
+| `underperformers` | Bottom 3 ads ranked by ROAS — these are the focus of creative suggestions |
+| `platform_breakdown` | Meta vs Google split: count, total spend, total conversions, avg ROAS per platform |
+| `insights` | **LLM Call 1 output** — 5-section structured analysis: overall health, top ad diagnosis, underperformer root cause, platform comparison, budget reallocation recommendation |
+| `creative_suggestions` | **LLM Call 2 output** — 5 actionable fixes for underperformers, each with AD / PROBLEM / SUGGESTION / EXPECTED IMPACT |
+| `report` | Full markdown report combining all of the above, also saved to Chroma for future RAG retrieval |
+
+**Example from the 11-ad sample run:**
+- Total spend: **$11,570** across 11 ads
+- Best performer: **AD003** (Meta Retargeting) at **8.15x ROAS**, CTR 4.00%, CPC $0.43
+- Worst performer: **AD005** (Meta Brand Awareness) at **0.85x ROAS** — actively losing money
+- Meta slightly trails Google: **4.18x vs 4.19x avg ROAS**
+- LLM correctly identified brand awareness ads as the budget drain and recommended shifting spend to retargeting and lookalike audience campaigns
+
 ## How to Run
 
 ```bash
